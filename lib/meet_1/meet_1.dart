@@ -24,7 +24,7 @@ class MeetSatu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Pertemuan 1"),
+            Text("Pertemuan 1", style: TextStyle(fontSize: 35)),
             Text("PPKD B 2"),
             Text("Kelas Mobile Programming"),
             Text("Nama Toko"),
@@ -63,6 +63,7 @@ class MeetSatu extends StatelessWidget {
       backgroundColor: Colors.grey[100], // Changed background color to white
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.indigoAccent,
+        child: Icon(Icons.add, color: Colors.white),
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -70,19 +71,101 @@ class MeetSatu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Pertemuan 1"),
-          Text("PPKD B 2"),
-          Text("Kelas Mobile Programming"),
-          Text("Nama Toko"),
-          Row(children: [Text("Gambar 1")]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [Text("Gambar 2")],
+          Text(
+            "Pertemuan 1",
+            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
           ),
-          Text("Gambar 3"),
+          Text(
+            "PPKD B 2",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            "Kelas Mobile Programming",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          Text(
+            "Nama Toko",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              color: Colors.blue[800],
+            ),
+          ),
+          Text.rich(
+            TextSpan(
+              text: "Toko Saya bernama",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+              children: [
+                TextSpan(
+                  text: " @habibie_shop",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blue[800],
+                  ),
+                ),
+                TextSpan(
+                  text: " beralamat di Blok M",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Text(
+                "Gambar 1",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ],
+          ),
+
+          Text(
+            "Gambar 3 Gambar 3 Gambar 3 Gambar 3 Gambar 3 Gambar 3 Gambar 3",
+            maxLines: 2,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Text(
+                  "Gambar 5 Gambar 5 Gambar 5 Gambar 5 Gambar 5 Gambar 5 Gambar 5",
+
+                  // maxLines: 2,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    // overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [Text("Gambar 4")],
+            children: [Text("Gambar 4 Gambar 5")],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -100,6 +183,22 @@ class MeetSatu extends StatelessWidget {
               Text("Gambar 4"),
               Text("Gambar 5"),
               Text("Gambar 6"),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(Icons.email),
+              Icon(Icons.email, color: Colors.blue),
+              Icon(Icons.email, size: 50),
+              Text(
+                "Email:",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ],
