@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_2/meet_1.dart';
+import 'package:ppkd_b_2/meet_1/meet_1.dart';
 
 void main() {
   runApp(const MyApp());
