@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_2/meet_2/meet_2_a.dart';
+import 'package:ppkd_b_2/meet_3/meet_3c.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
       ),
-      home: MeetDuaA(),
+      home: MeetTigaC(),
     );
   }
 }
