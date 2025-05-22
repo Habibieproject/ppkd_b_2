@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_2/meet_3/meet_3c.dart';
+import 'package:ppkd_b_2/meet_4/meet_4b.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'PPKD B 2',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      home: MeetTigaC(),
+      home: MeetEmpatB(),
     );
   }
 }
