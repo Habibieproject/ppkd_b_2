@@ -14,6 +14,13 @@ class _MeetLimaState extends State<MeetLima> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text("Meet 5", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: Color(0xff537D5D),
