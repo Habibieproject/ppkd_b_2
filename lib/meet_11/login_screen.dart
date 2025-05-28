@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
-import 'package:ppkd_b_2/meet_12/meet_12a.dart';
+import 'package:ppkd_b_2/meet_12/meet_12b.dart';
 import 'package:ppkd_b_2/meet_4/meet_4a.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     //   context,
                     //   MaterialPageRoute(builder: (context) => const MeetLima()),
                     // );
-                    Navigator.pushNamed(context, Meet12AInputWidget.id);
+                    Navigator.pushNamed(context, MeetDuaBelasB.id);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.blueButton,

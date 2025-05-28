@@ -38,14 +38,14 @@ class _Meet12AInputWidgetState extends State<Meet12AInputWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: isSwitchOn ? AppColor.gray88 : Colors.white,
-      appBar: AppBar(
-        backgroundColor: AppColor.army1,
-        title: Text(
-          "Meet 12A Input Widget",
-          style: AppStyle.fontBold(fontSize: 14),
-        ),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: AppColor.army1,
+      //   title: Text(
+      //     "Meet 12A Input Widget",
+      //     style: AppStyle.fontBold(fontSize: 14),
+      //   ),
+      //   centerTitle: true,
+      // ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,20 +54,30 @@ class _Meet12AInputWidgetState extends State<Meet12AInputWidget> {
             buildSwitch(),
             buildDropdownButton(),
             buildDataTime(context),
-            IconButton(
-              onPressed: () async {
-                final TimeOfDay? picked = await showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay(hour: 1, minute: 10),
-                );
-                if (picked != null) {
-                  setState(() {
-                    selectedDay = picked;
-                  });
-                }
-              },
-              icon: Icon(Icons.watch_later),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () async {
+                    final TimeOfDay? picked = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay(hour: 1, minute: 10),
+                    );
+                    if (picked != null) {
+                      setState(() {
+                        selectedDay = picked;
+                      });
+                    }
+                  },
+                  icon: Icon(Icons.watch_later),
+                ),
+                Text(
+                  selectedDay == null
+                      ? "Pilih Waktu"
+                      : "${selectedDay!.hour.toString()}:${selectedDay!.minute.toString()}",
+                ),
+              ],
             ),
+
             // buildCheckBox(_isChecked1),
             // buildCheckBox(_isChecked2),
           ],
