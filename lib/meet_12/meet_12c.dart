@@ -3,8 +3,8 @@ import 'package:ppkd_b_2/constant/app_color.dart';
 import 'package:ppkd_b_2/constant/app_image.dart';
 import 'package:ppkd_b_2/constant/app_style.dart';
 import 'package:ppkd_b_2/meet_11/login_screen.dart';
-import 'package:ppkd_b_2/meet_12/meet_12a.dart';
-import 'package:ppkd_b_2/meet_14/meet_14a.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/meet_14a.dart';
+import 'package:ppkd_b_2/meet_14/meet_b/validator_widget.dart';
 
 class MeetDuaBelasC extends StatefulWidget {
   const MeetDuaBelasC({super.key});
@@ -18,8 +18,9 @@ class _MeetDuaBelasCState extends State<MeetDuaBelasC> {
   static const List<Widget> _screen = [
     Center(child: Text("Halaman 1")),
     Meet14a(),
+    Meet14b(),
     // Center(child: Text("Halaman 2")),
-    Meet12AInputWidget(),
+    // Meet12AInputWidget(),
     Center(child: Text("Halaman 3")),
   ];
   void _itemTapped(int index) {
@@ -79,7 +80,7 @@ class _MeetDuaBelasCState extends State<MeetDuaBelasC> {
             ListTile(
               leading: Icon(Icons.key, color: AppColor.army1),
               title: Text(
-                "Ubah Password",
+                "Validator",
                 style: AppStyle.fontRegular(fontSize: 14),
               ),
               onTap: () {

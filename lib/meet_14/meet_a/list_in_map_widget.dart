@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_style.dart';
-import 'package:ppkd_b_2/meet_14/list_widget.dart';
-import 'package:ppkd_b_2/meet_14/map_widget.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/list_widget.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/map_widget.dart';
 
 class ListInMapWidget extends StatefulWidget {
   const ListInMapWidget({super.key});

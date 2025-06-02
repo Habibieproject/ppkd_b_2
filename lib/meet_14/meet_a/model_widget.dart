@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_image.dart';
-import 'package:ppkd_b_2/meet_14/model/product_model.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/model/product_model.dart';
 
 class ModelWidget extends StatefulWidget {
   const ModelWidget({super.key});

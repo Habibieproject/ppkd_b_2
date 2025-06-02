@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_2/meet_14/list_in_map_widget.dart';
-import 'package:ppkd_b_2/meet_14/list_widget.dart';
-import 'package:ppkd_b_2/meet_14/map_widget.dart';
-import 'package:ppkd_b_2/meet_14/model_widget.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/list_in_map_widget.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/list_widget.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/map_widget.dart';
+import 'package:ppkd_b_2/meet_14/meet_a/model_widget.dart';
 
 class Meet14a extends StatelessWidget {
   const Meet14a({super.key});
