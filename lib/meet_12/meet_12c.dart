@@ -4,6 +4,7 @@ import 'package:ppkd_b_2/constant/app_image.dart';
 import 'package:ppkd_b_2/constant/app_style.dart';
 import 'package:ppkd_b_2/meet_11/login_screen.dart';
 import 'package:ppkd_b_2/meet_12/meet_12a.dart';
+import 'package:ppkd_b_2/meet_14/meet_14a.dart';
 
 class MeetDuaBelasC extends StatefulWidget {
   const MeetDuaBelasC({super.key});
@@ -16,6 +17,7 @@ class _MeetDuaBelasCState extends State<MeetDuaBelasC> {
   int _selectedIndex = 0;
   static const List<Widget> _screen = [
     Center(child: Text("Halaman 1")),
+    Meet14a(),
     // Center(child: Text("Halaman 2")),
     Meet12AInputWidget(),
     Center(child: Text("Halaman 3")),
@@ -64,13 +66,24 @@ class _MeetDuaBelasCState extends State<MeetDuaBelasC> {
               },
             ),
             ListTile(
+              leading: Icon(Icons.home, color: AppColor.army1),
+              title: Text(
+                "List dan Map",
+                style: AppStyle.fontRegular(fontSize: 14),
+              ),
+              onTap: () {
+                _itemTapped(1);
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.key, color: AppColor.army1),
               title: Text(
                 "Ubah Password",
                 style: AppStyle.fontRegular(fontSize: 14),
               ),
               onTap: () {
-                _itemTapped(1);
+                _itemTapped(2);
                 Navigator.pop(context); // Close the drawer
               },
             ),
