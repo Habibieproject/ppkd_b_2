@@ -5,6 +5,7 @@ import 'package:ppkd_b_2/meet_12/meet_12a.dart';
 import 'package:ppkd_b_2/meet_12/meet_12b.dart';
 import 'package:ppkd_b_2/meet_2/meet_2.dart';
 import 'package:ppkd_b_2/meet_3/meet_3a.dart';
+import 'package:ppkd_b_2/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         //Harus didaftarkan dulu disini
-        "/": (context) => LoginScreen(),
+        "/": (context) => SplashScreen(),
+        "/login": (context) => LoginScreen(),
         "/meet_2": (context) => MeetDua(),
         MeetTigaA.id: (context) => MeetTigaA(),
         Meet12AInputWidget.id: (context) => Meet12AInputWidget(),
