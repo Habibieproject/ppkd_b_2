@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
 import 'package:ppkd_b_2/meet_16/database/db_helper.dart';
+import 'package:ppkd_b_2/meet_16/model/user_model.dart';
 
 class RegisterScreenApp extends StatefulWidget {
   const RegisterScreenApp({super.key});
@@ -117,11 +118,13 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                         print("Phone: ${phoneController.text}");
                         print("Password: ${passwordController.text}");
                         DbHelper.registerUser(
-                          nameController.text,
-                          usernameController.text,
-                          emailController.text,
-                          phoneController.text,
-                          passwordController.text,
+                          data: UserModel(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            name: nameController.text,
+                            phone: phoneController.text,
+                            username: usernameController.text,
+                          ),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

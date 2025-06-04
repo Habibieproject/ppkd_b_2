@@ -14,9 +14,17 @@ class LoginScreenApp extends StatefulWidget {
 
 class _LoginScreenAppState extends State<LoginScreenApp> {
   bool isVisibility = false;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Stack(children: [buildBackground(), buildLayer()]));
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: Stack(children: [buildBackground(), buildLayer()]),
+      ),
+    );
   }
 
   SafeArea buildLayer() {
@@ -40,15 +48,18 @@ class _LoginScreenAppState extends State<LoginScreenApp> {
               height(24),
               buildTitle("Email Address"),
               height(12),
-              buildTextField(hintText: "Enter your email"),
-              height(16),
-              buildTitle("Phone Number"),
-              height(12),
-              buildTextField(hintText: "Enter your phone number"),
+              buildTextField(
+                hintText: "Enter your email",
+                controller: emailController,
+              ),
               height(16),
               buildTitle("Password"),
               height(12),
-              buildTextField(hintText: "Enter your password", isPassword: true),
+              buildTextField(
+                hintText: "Enter your password",
+                isPassword: true,
+                controller: passwordController,
+              ),
               height(12),
               Align(
                 alignment: Alignment.centerRight,
@@ -194,8 +205,19 @@ class _LoginScreenAppState extends State<LoginScreenApp> {
     );
   }
 
-  TextField buildTextField({String? hintText, bool isPassword = false}) {
-    return TextField(
+  Widget buildTextField({
+    String? hintText,
+    bool isPassword = false,
+    required TextEditingController controller,
+  }) {
+    return TextFormField(
+      controller: controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
       obscureText: isPassword ? isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
