@@ -3,6 +3,8 @@ import 'package:ppkd_b_2/constant/app_color.dart';
 import 'package:ppkd_b_2/meet_11/login_screen.dart';
 import 'package:ppkd_b_2/meet_12/meet_12a.dart';
 import 'package:ppkd_b_2/meet_12/meet_12b.dart';
+import 'package:ppkd_b_2/meet_16/login_screen.dart';
+import 'package:ppkd_b_2/meet_16/register_screen.dart';
 import 'package:ppkd_b_2/meet_2/meet_2.dart';
 import 'package:ppkd_b_2/meet_3/meet_3a.dart';
 import 'package:ppkd_b_2/splash_screen.dart';
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => SplashScreen(),
         "/login": (context) => LoginScreen(),
         "/meet_2": (context) => MeetDua(),
+        LoginScreenApp.id: (context) => LoginScreenApp(),
+        RegisterScreenApp.id: (context) => RegisterScreenApp(),
         MeetTigaA.id: (context) => MeetTigaA(),
         Meet12AInputWidget.id: (context) => Meet12AInputWidget(),
         MeetDuaBelasB.id: (context) => MeetDuaBelasB(),
