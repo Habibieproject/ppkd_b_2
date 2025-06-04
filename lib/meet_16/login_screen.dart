@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
-import 'package:ppkd_b_2/helper/preference.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
-import 'package:ppkd_b_2/meet_12/meet_12b.dart';
+import 'package:ppkd_b_2/meet_16/database/db_helper.dart';
 import 'package:ppkd_b_2/meet_16/register_screen.dart';
 
 class LoginScreenApp extends StatefulWidget {
@@ -85,14 +84,21 @@ class _LoginScreenAppState extends State<LoginScreenApp> {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to MeetLima screen menggunakan Push
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const MeetLima()),
-                    // );
-                    PreferenceHandler.saveLogin(true);
-                    Navigator.pushNamed(context, MeetDuaBelasB.id);
+                  onPressed: () async {
+                    final userData = await DbHelper.login(
+                      emailController.text,
+                      passwordController.text,
+                    );
+                    if (userData != null) {
+                      print('data ada ${userData.toJson()}');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Login successful")),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Invalid email or password")),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.blueButton,

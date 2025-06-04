@@ -29,7 +29,7 @@ class DbHelper {
     print("User registered successfully");
   }
 
-  static Future<UserModel> login(String email, String password) async {
+  static Future<UserModel?> login(String email, String password) async {
     final db = await initDB();
     final List<Map<String, dynamic>> data = await db.query(
       'users',
@@ -39,7 +39,8 @@ class DbHelper {
     if (data.isNotEmpty) {
       return UserModel.fromMap(data.first);
     } else {
-      throw Exception("Invalid email or password");
+      return null;
+      // throw Exception("Invalid email or password");
     }
   }
 }
