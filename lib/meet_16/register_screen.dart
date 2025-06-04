@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
-import 'package:ppkd_b_2/helper/preference.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
-import 'package:ppkd_b_2/meet_12/meet_12b.dart';
+import 'package:ppkd_b_2/meet_16/database/db_helper.dart';
 
 class RegisterScreenApp extends StatefulWidget {
   const RegisterScreenApp({super.key});
@@ -18,10 +17,16 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Stack(children: [buildBackground(), buildLayer()]));
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: Stack(children: [buildBackground(), buildLayer()]),
+      ),
+    );
   }
 
   SafeArea buildLayer() {
@@ -105,13 +110,27 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
                   height: 56,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigate to MeetLima screen menggunakan Push
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const MeetLima()),
-                      // );
-                      PreferenceHandler.saveLogin(true);
-                      Navigator.pushNamed(context, MeetDuaBelasB.id);
+                      if (_formKey.currentState!.validate()) {
+                        print("Email: ${emailController.text}");
+                        print("Name: ${nameController.text}");
+                        print("Username: ${usernameController.text}");
+                        print("Phone: ${phoneController.text}");
+                        print("Password: ${passwordController.text}");
+                        DbHelper.registerUser(
+                          nameController.text,
+                          usernameController.text,
+                          emailController.text,
+                          phoneController.text,
+                          passwordController.text,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Registration Successful!"),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                        Navigator.pop(context);
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColor.blueButton,
@@ -182,6 +201,12 @@ class _RegisterScreenAppState extends State<RegisterScreenApp> {
   }) {
     return TextFormField(
       controller: controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
       obscureText: isPassword ? isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
