@@ -96,7 +96,7 @@ class _LoginScreenAppState extends State<LoginScreenApp> {
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Invalid email or password")),
+                        SnackBar(content: Text("Email atau password salah")),
                       );
                     }
                   },
