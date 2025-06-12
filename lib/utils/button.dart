@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
 
 class DefaultButton extends StatelessWidget {
-  const DefaultButton({super.key, this.onPressed, required this.text});
+  const DefaultButton({
+    super.key,
+    this.onPressed,
+    required this.text,
+    this.color,
+  });
   final void Function()? onPressed;
   final String text;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -13,7 +19,7 @@ class DefaultButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.blueButton,
+          backgroundColor: color ?? AppColor.blueButton,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         ),
         child: Text(

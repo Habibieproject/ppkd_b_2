@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
+import 'package:ppkd_b_2/meet_12/meet_12b.dart';
 import 'package:ppkd_b_2/meet_16/database/db_helper.dart';
 import 'package:ppkd_b_2/meet_16/register_screen.dart';
 
@@ -93,6 +94,11 @@ class _LoginScreenAppState extends State<LoginScreenApp> {
                       print('data ada ${userData.toJson()}');
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Login successful")),
+                      );
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        MeetDuaBelasB.id,
+                        (route) => false,
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
