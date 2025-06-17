@@ -7,6 +7,7 @@ import 'package:ppkd_b_2/meet_11/login_screen.dart';
 import 'package:ppkd_b_2/meet_14/meet_a/meet_14a.dart';
 import 'package:ppkd_b_2/meet_14/meet_b/validator_widget.dart';
 import 'package:ppkd_b_2/meet_20/random_picker_screen.dart';
+import 'package:ppkd_b_2/meet_22/view/user_list_screen.dart';
 
 class MeetDuaBelasC extends StatefulWidget {
   const MeetDuaBelasC({super.key});
@@ -22,6 +23,7 @@ class _MeetDuaBelasCState extends State<MeetDuaBelasC> {
     Meet14a(),
     Meet14b(),
     RandomPickerScreen(),
+    UserListScreen(),
     // Center(child: Text("Halaman 2")),
     // Meet12AInputWidget(),
     Center(child: Text("Halaman 3")),
@@ -99,6 +101,17 @@ class _MeetDuaBelasCState extends State<MeetDuaBelasC> {
               ),
               onTap: () {
                 _itemTapped(3);
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.key, color: AppColor.army1),
+              title: Text(
+                "Get USER API",
+                style: AppStyle.fontRegular(fontSize: 14),
+              ),
+              onTap: () {
+                _itemTapped(4);
                 Navigator.pop(context); // Close the drawer
               },
             ),
