@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_image.dart';
 import 'package:ppkd_b_2/constant/app_style.dart';
 import 'package:ppkd_b_2/helper/preference.dart';
-import 'package:ppkd_b_2/meet_16/login_screen.dart';
+import 'package:ppkd_b_2/meet_25/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // } else {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        LoginScreenApp.id,
+        LoginScreenApi.id,
         (route) => false,
       );
       // }
