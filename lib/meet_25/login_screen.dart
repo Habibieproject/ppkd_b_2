@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_color.dart';
+import 'package:ppkd_b_2/helper/preference.dart';
 import 'package:ppkd_b_2/meet_11/meet_11.dart';
-import 'package:ppkd_b_2/meet_12/meet_12b.dart';
-import 'package:ppkd_b_2/meet_16/database/db_helper.dart';
+import 'package:ppkd_b_2/meet_25/api/user_api.dart';
+import 'package:ppkd_b_2/meet_25/profile_screen.dart';
 import 'package:ppkd_b_2/meet_25/register_screen.dart';
 
 class LoginScreenApi extends StatefulWidget {
@@ -14,9 +15,51 @@ class LoginScreenApi extends StatefulWidget {
 
 class _LoginScreenApiState extends State<LoginScreenApi> {
   bool isVisibility = false;
+  bool isLoading = false;
+  final UserService userService = UserService();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  void login() async {
+    setState(() {
+      isLoading = true;
+    });
+    final res = await userService.login(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    if (res["data"] != null) {
+      PreferenceHandler.saveToken(res["data"]["token"]);
+      print("Token: ${res["data"]["token"]}");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Login successful!"),
+          backgroundColor: Colors.green,
+        ),
+      );
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        ProfileUserScreen.id,
+        (route) => false,
+      );
+      // Navigator.pop(context);
+    } else if (res["errors"] != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Maaf, ${res["message"]}"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+    setState(() {
+      isLoading = false;
+    });
+
+    // } else {
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,25 +129,30 @@ class _LoginScreenApiState extends State<LoginScreenApi> {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () async {
-                    final userData = await DbHelper.login(
-                      emailController.text,
-                      passwordController.text,
-                    );
-                    if (userData != null) {
-                      print('data ada ${userData.toJson()}');
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Login successful")),
-                      );
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        MeetDuaBelasB.id,
-                        (route) => false,
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Email atau password salah")),
-                      );
+                    if (_formKey.currentState!.validate()) {
+                      print("Email: ${emailController.text}");
+                      print("Password: ${passwordController.text}");
+                      login();
                     }
+                    // final userData = await DbHelper.login(
+                    //   emailController.text,
+                    //   passwordController.text,
+                    // );
+                    // if (userData != null) {
+                    //   print('data ada ${userData.toJson()}');
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     SnackBar(content: Text("Login successful")),
+                    //   );
+                    //   Navigator.pushNamedAndRemoveUntil(
+                    //     context,
+                    //     MeetDuaBelasB.id,
+                    //     (route) => false,
+                    //   );
+                    // } else {
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     SnackBar(content: Text("Email atau password salah")),
+                    //   );
+                    // }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.blueButton,
@@ -112,14 +160,17 @@ class _LoginScreenApiState extends State<LoginScreenApi> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child:
+                      isLoading
+                          ? CircularProgressIndicator(color: Colors.white)
+                          : Text(
+                            "Login",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                 ),
               ),
               height(16),
