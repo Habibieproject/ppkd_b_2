@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ppkd_b_2/constant/app_image.dart';
 import 'package:ppkd_b_2/constant/app_style.dart';
 import 'package:ppkd_b_2/helper/preference.dart';
-import 'package:ppkd_b_2/meet_25/login_screen.dart';
+import 'package:ppkd_b_2/meet_12/meet_12b.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,17 +17,17 @@ class _SplashScreenState extends State<SplashScreen> {
       bool isLogin = await PreferenceHandler.getLogin();
       print("isLogin: $isLogin");
       // if (isLogin) {
-      //   return Navigator.pushNamedAndRemoveUntil(
-      //     context,
-      //     MeetDuaBelasB.id,
-      //     (route) => false,
-      //   );
-      // } else {
-      Navigator.pushNamedAndRemoveUntil(
+      return Navigator.pushNamedAndRemoveUntil(
         context,
-        LoginScreenApi.id,
+        MeetDuaBelasB.id,
         (route) => false,
       );
+      // } else {
+      // Navigator.pushNamedAndRemoveUntil(
+      //   context,
+      //   LoginScreenApi.id,
+      //   (route) => false,
+      // );
       // }
     });
   }
